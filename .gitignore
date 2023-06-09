@@ -1,0 +1,14 @@
+node_modules/
+.env
+
+coverage
+
+yarn-error.log
+
+dist/
+**/_drafts
+
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
