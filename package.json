@@ -2,6 +2,15 @@
   "name": "config-loaders",
   "version": "0.1.0",
   "description": "Collect and parse configuration from different sources",
+  "keywords": [
+    "config",
+    "configuration",
+    "env",
+    "environment",
+    "file",
+    "loader",
+    "yaml"
+  ],
   "license": "MIT",
   "author": "alxevvv <alxevvv@gmail.com>",
   "type": "module",
