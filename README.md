@@ -4,7 +4,7 @@ Collect and parse configuration from different sources
 
 ## Examples
 
-### Load `.env` file from current working or upper directory:
+#### Load `.env` file from current working or upper directory:
 
 ```properties
 # .env
@@ -29,7 +29,7 @@ const value = loader.getValue();
 */
 ```
 
-### Load environment variables:
+#### Load environment variables:
 
 ```typescript
 import { EnvLoader } from "config-loaders";
@@ -46,7 +46,7 @@ value contains only VAR1 and VAR2 variables
 */
 ```
 
-### Load from multiple sources:
+#### Load from multiple sources:
 
 ```typescript
 import {
@@ -68,6 +68,12 @@ const value = loader.getValue();
 value is values from .env file overriden by values
 from process.env and { TEST: true } object.
 */
+```
+
+## Install
+
+```
+npm install config-loaders
 ```
 
 ## **API**
@@ -114,7 +120,7 @@ a parsed value to its final form.
 Base class for implementing file loaders.
 Includes logic for search the file by traversing directory tree up.
 
-<a name="FileLoaderOptions"></a> #### **Options**:
+#### <a name="FileLoaderOptions"></a> **Options**:
 
 #### `fileName?: string | (() => string)`
 
