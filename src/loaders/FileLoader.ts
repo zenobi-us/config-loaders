@@ -53,6 +53,10 @@ const defaultOptions: Required<FileLoaderOptions> = {
   failSilently: false,
 };
 
+/**
+ * Base class for implementing file loaders.
+ * Includes logic to search the file by traversing directory tree up.
+ */
 abstract class FileLoader extends Loader {
   readonly options: Required<FileLoaderOptions>;
 
