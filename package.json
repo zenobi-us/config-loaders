@@ -15,6 +15,7 @@
   "author": "alxevvv <alxevvv@gmail.com>",
   "type": "module",
   "exports": {
+    "default": "./dist/index.js",
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
   },
