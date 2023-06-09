@@ -19,6 +19,9 @@
     "test:cov": "vitest run --coverage --silent",
     "test:watch": "vitest --watch"
   },
+  "dependencies": {
+    "optional-require": "^1.1.8"
+  },
   "devDependencies": {
     "@types/node": "^20.2.5",
     "@typescript-eslint/eslint-plugin": "^5.59.8",

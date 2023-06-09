@@ -1,0 +1,1 @@
+export { tryRequire } from "./tryRequire";
