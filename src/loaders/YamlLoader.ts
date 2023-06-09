@@ -10,7 +10,7 @@ import {
 
 /**
  * Subclass of the FileLoader for loading .yaml files.
- * @requires yaml
+ * @requires `yaml` package
  */
 class YamlLoader extends FileLoader {
   constructor(options: FileLoaderOptions = {}) {
