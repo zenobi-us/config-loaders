@@ -6,7 +6,6 @@ coverage
 yarn-error.log
 
 dist/
-docs/
 **/_drafts
 
 .vscode/*
