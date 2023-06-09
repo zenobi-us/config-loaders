@@ -4,7 +4,7 @@ import { Loader } from "./Loader";
 
 interface ValueLoaderOptions<T extends JsonObject> {
   /**
-   * Value itself or a factory function returning the value
+   * Value itself or a factory function returning the value.
    */
   value: T | (() => T);
 }
