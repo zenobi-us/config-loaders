@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
-import { parse as pathParse, relative } from "node:path";
+import { normalize, parse as pathParse, relative } from "node:path";
 
+import findUpSync from "findup-sync";
 import { JsonObject } from "type-fest";
 
 import { Loader } from "./Loader";
@@ -105,10 +106,12 @@ abstract class FileLoader extends Loader {
   }
 
   private async findFile() {
-    const { findUpSync } = await import("find-up");
-    const filePath = findUpSync(this.fileName, {
+    const findPattern = this.stopAt
+      ? normalize(`${this.stopAt}/**/${this.fileName}`)
+      : this.fileName;
+
+    const filePath = findUpSync(findPattern, {
       cwd: this.fileDir,
-      stopAt: this.stopAt,
     });
 
     if (filePath && existsSync(filePath)) {
