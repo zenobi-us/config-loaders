@@ -1,6 +1,6 @@
 {
   "name": "config-loaders",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Collect and parse configuration from different sources",
   "keywords": [
     "config",
