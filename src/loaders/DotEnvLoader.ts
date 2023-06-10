@@ -2,6 +2,7 @@ import {
   jsonParseStringValues,
   JsonStringValuesParserOptions,
 } from "json-string-values-parser";
+import set from "lodash.set";
 import { JsonObject } from "type-fest";
 
 import { tryRequire } from "@/utils";
@@ -20,6 +21,13 @@ interface DotEnvLoaderOptions extends FileLoaderOptions {
   expandVariables?: boolean;
 
   /**
+   * If set to non-zero length string, use it to parse
+   * environment variables to objects.
+   * @default ""
+   */
+  nestedKeyDelimiter?: string;
+
+  /**
    * Parser options.
    * @see https://github.com/alxevvv/json-string-values-parser#options
    * @default {}
@@ -31,6 +39,7 @@ const defaultOptions: Required<DotEnvLoaderOptions> = {
   ...defaultFileLoaderOptions,
   fileName: ".env",
   expandVariables: true,
+  nestedKeyDelimiter: "",
   parserOptions: {},
 };
 
@@ -78,6 +87,22 @@ class DotEnvLoader extends FileLoader {
       parsedValue,
       this.options.parserOptions,
     ) as JsonObject;
+  }
+
+  /**
+   * If key delimiter given, search it in the config object keys and
+   * build appropriate nested object structure.
+   */
+  async transform(parsedValue: JsonObject): Promise<JsonObject> {
+    const { nestedKeyDelimiter } = this.options;
+    if (nestedKeyDelimiter.length > 0) {
+      const transformedValue = {} as JsonObject;
+      Object.entries(parsedValue).forEach(([key, value]) => {
+        set(transformedValue, key.split(nestedKeyDelimiter), value);
+      });
+      return transformedValue;
+    }
+    return parsedValue;
   }
 
   private hasExpandableVariables(source: Record<string, string>) {

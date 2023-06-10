@@ -10,6 +10,9 @@ dependencies:
   lodash.merge:
     specifier: ^4.6.2
     version: 4.6.2
+  lodash.set:
+    specifier: ^4.3.2
+    version: 4.3.2
   optional-require:
     specifier: ^1.1.8
     version: 1.1.8
@@ -32,6 +35,9 @@ devDependencies:
   '@types/lodash.merge':
     specifier: ^4.6.7
     version: 4.6.7
+  '@types/lodash.set':
+    specifier: ^4.3.7
+    version: 4.3.7
   '@types/node':
     specifier: ^20.2.5
     version: 20.2.5
@@ -459,6 +465,12 @@ packages:
 
   /@types/lodash.merge@4.6.7:
     resolution: {integrity: sha512-OwxUJ9E50gw3LnAefSHJPHaBLGEKmQBQ7CZe/xflHkyy/wH2zVyEIAKReHvVrrn7zKdF58p16We9kMfh7v0RRQ==}
+    dependencies:
+      '@types/lodash': 4.14.195
+    dev: true
+
+  /@types/lodash.set@4.3.7:
+    resolution: {integrity: sha512-bS5Wkg/nrT82YUfkNYPSccFrNZRL+irl7Yt4iM6OTSQ0VZJED2oUIVm15NkNtUAQ8SRhCe+axqERUV6MJgkeEg==}
     dependencies:
       '@types/lodash': 4.14.195
     dev: true
@@ -1649,6 +1661,10 @@ packages:
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  /lodash.set@4.3.2:
+    resolution: {integrity: sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==}
+    dev: false
 
   /lodash.sortby@4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}

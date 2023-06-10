@@ -97,4 +97,23 @@ describe("class DotEnvLoader", () => {
 
     hook.unhook();
   });
+
+  it("should create an object if delimiter found in the key", async () => {
+    const loader = new DotEnvLoader({
+      nestedKeyDelimiter: "__",
+      fileDir: resolve(__dirname, "../fixtures/env/"),
+      fileName: ".separated.env",
+    });
+
+    expect(await loader.getValue()).toEqual({
+      DATABASE: {
+        PORT: 5432,
+        HOST: "localhost",
+        CREDENTIALS: {
+          USERNAME: "user",
+          PASSWORD: "secret",
+        },
+      },
+    });
+  });
 });
