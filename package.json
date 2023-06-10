@@ -11,6 +11,10 @@
     "loader",
     "yaml"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alxevvv/config-loaders"
+  },
   "license": "MIT",
   "author": "alxevvv <alxevvv@gmail.com>",
   "type": "module",
