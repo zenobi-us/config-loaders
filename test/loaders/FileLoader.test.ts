@@ -30,6 +30,16 @@ describe("abstract class FileLoader", () => {
     });
   });
 
+  it("should load the file by its path", async () => {
+    const loader = new TestFileLoader({
+      fileName: resolve(__dirname, "../fixtures/dir/config"),
+    });
+
+    expect(await loader.getValue()).toEqual({
+      fileContent: "DIR_TEST_CONTENT",
+    });
+  });
+
   it("should not go up if findUp option is false", async () => {
     const cwdSpy = vi.spyOn(process, "cwd");
     cwdSpy.mockReturnValue(resolve(__dirname, "../fixtures/dir/subdir/"));

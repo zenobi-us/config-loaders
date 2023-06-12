@@ -8,7 +8,7 @@ import { Loader } from "./Loader";
 
 interface FileLoaderOptions {
   /**
-   * Name of the file to be loaded.
+   * Name of the file to be loaded or path to the file.
    * @default "config"
    */
   fileName?: string | (() => string);
@@ -106,8 +106,14 @@ abstract class FileLoader extends Loader {
   }
 
   private async findFile() {
+    const fileName = this.fileName;
+
+    if (existsSync(fileName)) {
+      return fileName;
+    }
+
     const findPattern = this.stopAt
-      ? normalize(`${this.stopAt}/**/${this.fileName}`)
+      ? normalize(`${this.stopAt}/**/${fileName}`)
       : this.fileName;
 
     const filePath = findUpSync(findPattern, {
