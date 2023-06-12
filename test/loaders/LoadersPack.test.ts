@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { LoadersPack, ValueLoader } from "@/loaders";
+import { LoadersPack, loadersPack, ValueLoader, valueLoader } from "@/loaders";
 
 describe("class LoadersPack", () => {
   it("should call getValue on each loader and merge results", async () => {
@@ -35,5 +35,19 @@ describe("class LoadersPack", () => {
 
     expect(spy1).toBeCalledTimes(1);
     expect(spy2).toBeCalledTimes(1);
+  });
+
+  it("should be able to create loader by function call", async () => {
+    const loader = loadersPack([
+      valueLoader({ str: "foo" }),
+      valueLoader({ num: 42 }),
+      valueLoader({ bool: false }),
+    ]);
+
+    expect(await loader.getValue()).toEqual({
+      str: "foo",
+      num: 42,
+      bool: false,
+    });
   });
 });

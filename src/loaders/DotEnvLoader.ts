@@ -119,5 +119,26 @@ class DotEnvLoader extends FileLoader {
   }
 }
 
-export { DotEnvLoader };
+function dotEnvLoader(options?: DotEnvLoaderOptions): DotEnvLoader;
+function dotEnvLoader(
+  fileName: string,
+  options?: DotEnvLoaderOptions,
+): DotEnvLoader;
+function dotEnvLoader(
+  fileNameOrOptions?: string | DotEnvLoaderOptions,
+  options?: DotEnvLoaderOptions,
+) {
+  if (typeof fileNameOrOptions === "undefined") {
+    return new DotEnvLoader();
+  } else if (typeof fileNameOrOptions === "string") {
+    return new DotEnvLoader({
+      fileName: fileNameOrOptions,
+      ...(options ?? {}),
+    });
+  } else {
+    return new DotEnvLoader(fileNameOrOptions);
+  }
+}
+
+export { DotEnvLoader, dotEnvLoader };
 export type { DotEnvLoaderOptions };

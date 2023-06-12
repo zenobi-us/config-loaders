@@ -90,5 +90,9 @@ class EnvLoader extends Loader {
   }
 }
 
-export { EnvLoader };
+function envLoader(options?: EnvLoaderOptions) {
+  return new EnvLoader(options);
+}
+
+export { EnvLoader, envLoader };
 export type { EnvLoaderOptions };

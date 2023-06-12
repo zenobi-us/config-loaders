@@ -1,19 +1,15 @@
 import { resolve } from "node:path";
 
 import { Hook } from "require-in-the-middle";
-import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { DotEnvLoader } from "@/loaders";
+import { DotEnvLoader, dotEnvLoader } from "@/loaders";
 
 describe("class DotEnvLoader", () => {
   const processExitStub = vi.fn();
   const consoleErrorStub = vi.fn();
 
   afterEach(() => {
-    vi.resetAllMocks();
-  });
-
-  afterAll(() => {
     vi.restoreAllMocks();
   });
 
@@ -114,6 +110,16 @@ describe("class DotEnvLoader", () => {
           PASSWORD: "secret",
         },
       },
+    });
+  });
+
+  it("should be able to create loader by function call", async () => {
+    const loader = dotEnvLoader(resolve(__dirname, "../fixtures/env/.env"));
+
+    expect(await loader.getValue()).toEqual({
+      STR: "value",
+      NUM: 42,
+      BOOL: true,
     });
   });
 });

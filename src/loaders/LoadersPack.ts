@@ -27,4 +27,8 @@ class LoadersPack extends Loader {
   }
 }
 
-export { LoadersPack };
+function loadersPack(loaders: Loader[]) {
+  return new LoadersPack(loaders);
+}
+
+export { LoadersPack, loadersPack };

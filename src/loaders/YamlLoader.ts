@@ -30,4 +30,22 @@ class YamlLoader extends FileLoader {
   }
 }
 
-export { YamlLoader };
+function yamlLoader(options?: FileLoaderOptions): YamlLoader;
+function yamlLoader(fileName: string, options?: FileLoaderOptions): YamlLoader;
+function yamlLoader(
+  fileNameOrOptions?: string | FileLoaderOptions,
+  options?: FileLoaderOptions,
+) {
+  if (typeof fileNameOrOptions === "undefined") {
+    return new YamlLoader();
+  } else if (typeof fileNameOrOptions === "string") {
+    return new YamlLoader({
+      fileName: fileNameOrOptions,
+      ...(options ?? {}),
+    });
+  } else {
+    return new YamlLoader(fileNameOrOptions);
+  }
+}
+
+export { YamlLoader, yamlLoader };

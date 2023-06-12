@@ -35,5 +35,11 @@ class ValueLoader<T extends JsonObject> extends Loader {
   }
 }
 
-export { ValueLoader };
+function valueLoader<T extends JsonObject>(
+  value: ValueLoaderOptions<T>["value"],
+) {
+  return new ValueLoader({ value });
+}
+
+export { ValueLoader, valueLoader };
 export type { ValueLoaderOptions };

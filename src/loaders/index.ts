@@ -1,11 +1,11 @@
 export type { DotEnvLoaderOptions } from "./DotEnvLoader";
-export { DotEnvLoader } from "./DotEnvLoader";
+export { DotEnvLoader, dotEnvLoader } from "./DotEnvLoader";
 export type { EnvLoaderOptions } from "./EnvLoader";
-export { EnvLoader } from "./EnvLoader";
+export { EnvLoader, envLoader } from "./EnvLoader";
 export type { FileLoaderOptions } from "./FileLoader";
 export { FileLoader } from "./FileLoader";
 export { Loader } from "./Loader";
-export { LoadersPack } from "./LoadersPack";
+export { LoadersPack, loadersPack } from "./LoadersPack";
 export type { ValueLoaderOptions } from "./ValueLoader";
-export { ValueLoader } from "./ValueLoader";
-export { YamlLoader } from "./YamlLoader";
+export { ValueLoader, valueLoader } from "./ValueLoader";
+export { YamlLoader, yamlLoader } from "./YamlLoader";

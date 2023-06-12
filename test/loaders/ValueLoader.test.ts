@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { ValueLoader } from "@/loaders";
+import { ValueLoader, valueLoader } from "@/loaders";
 
 describe("class ValueLoader", () => {
   it("should return the values passed on initialization", async () => {
@@ -21,5 +21,11 @@ describe("class ValueLoader", () => {
     });
 
     expect(await loader.getValue()).toEqual({ test: "TEST" });
+  });
+
+  it("should be albe to create loader by function call", async () => {
+    const loader = valueLoader({ test: "loader_function" });
+
+    expect(await loader.getValue()).toEqual({ test: "loader_function" });
   });
 });

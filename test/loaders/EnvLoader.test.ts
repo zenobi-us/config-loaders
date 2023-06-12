@@ -1,6 +1,6 @@
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { EnvLoader } from "@/loaders";
+import { EnvLoader, envLoader } from "@/loaders";
 
 describe("class EnvLoader", () => {
   const originalEnv = process.env;
@@ -107,5 +107,13 @@ describe("class EnvLoader", () => {
       BAR_1: 1,
       BAR_2: 2,
     });
+  });
+
+  it("should be able to create loader by function call", async () => {
+    process.env.FOO = "bar";
+
+    const loader = envLoader();
+
+    expect(await loader.getValue()).toEqual({ FOO: "bar" });
   });
 });

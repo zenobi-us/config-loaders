@@ -1,19 +1,15 @@
 import { resolve } from "node:path";
 
 import { Hook } from "require-in-the-middle";
-import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { YamlLoader } from "@/loaders";
+import { YamlLoader, yamlLoader } from "@/loaders";
 
 describe("class YamlLoader", () => {
   const processExitStub = vi.fn();
   const consoleErrorStub = vi.fn();
 
   afterEach(() => {
-    vi.resetAllMocks();
-  });
-
-  afterAll(() => {
     vi.restoreAllMocks();
   });
 
@@ -33,6 +29,14 @@ describe("class YamlLoader", () => {
         providers: ["github", "google"],
       },
     });
+  });
+
+  it("should be able to create loader by function call", async () => {
+    const loader = yamlLoader(
+      resolve(__dirname, "../fixtures/yaml/simple.yaml"),
+    );
+
+    expect(await loader.getValue()).toEqual({ str: "foo", num: 42 });
   });
 
   it("should throw an error if yaml is not installed", async () => {
