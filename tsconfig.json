@@ -8,24 +8,14 @@
     "moduleResolution": "Node",
     "outDir": "dist",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
-    "rootDirs": [
-      "src",
-      "test"
-    ],
+    "rootDirs": ["src", "test"],
     "sourceMap": true,
     "strict": true,
     "target": "ES6"
   },
-  "exclude": [
-    "**/dist",
-    "**/node_modules"
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["**/dist", "**/node_modules"],
+  "include": ["src/**/*"]
 }
