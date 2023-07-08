@@ -32,7 +32,7 @@
     "lint": "eslint ./{,src,test}/**/*.ts ./*.ts",
     "lint:fix": "eslint ./{,src,test}/**/*.ts ./*.ts --fix",
     "prepare": "husky install",
-    "semantic-release": "semantic-release --branches main",
+    "semantic-release": "semantic-release",
     "test": "vitest run",
     "test:cov": "vitest run --coverage --silent",
     "test:watch": "vitest --watch"
