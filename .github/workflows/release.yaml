@@ -44,6 +44,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Test Packaging
+        run: pnpm test:package
+
       - name: Release
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ./.npmrc
