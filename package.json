@@ -1,6 +1,6 @@
 {
   "name": "@zenobi-us/config-loaders",
-  "version": "0.3.0",
+  "version": "0.3.0-beta1",
   "description": "Collect and parse configuration from different sources",
   "keywords": [
     "config",
