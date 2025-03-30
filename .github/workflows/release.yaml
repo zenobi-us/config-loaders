@@ -53,6 +53,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
+          scope: "@zenobi-us"
           node-version: 18.x
 
       - name: Install dependencies
@@ -75,8 +76,6 @@ jobs:
 
       - name: Release
         run: |
-          pnpm publish
+          pnpm publish --no-git-checks --access public
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
