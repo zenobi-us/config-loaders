@@ -18,11 +18,15 @@
   "license": "MIT",
   "author": "alxevvv <alxevvv@gmail.com>",
   "type": "module",
-  "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
-  },
   "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "build": "tsup",
     "clean": "rimraf ./dist",
@@ -33,7 +37,8 @@
     "prepare": "husky install",
     "test": "vitest run",
     "test:cov": "vitest run --coverage --silent",
-    "test:watch": "vitest --watch"
+    "test:watch": "vitest --watch",
+    "test:package": "attw --pack"
   },
   "lint-staged": {
     "**/*.ts": [
@@ -50,6 +55,7 @@
     "optional-require": "^1.1.8"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.3",
     "@types/findup-sync": "^4.0.2",
     "@types/lodash.merge": "^4.6.7",
     "@types/lodash.set": "^4.3.7",
@@ -69,7 +75,7 @@
     "prettier": "^2.8.8",
     "require-in-the-middle": "^7.1.1",
     "rimraf": "^5.0.1",
-    "tsup": "^6.7.0",
+    "tsup": "^8.4.0",
     "type-fest": "^3.11.1",
     "typescript": "^5.1.3",
     "vitest": "^0.31.4",
