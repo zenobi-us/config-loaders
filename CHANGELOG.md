@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0-beta1](https://github.com/zenobi-us/config-loaders/compare/config-loaders-v0.3.0-beta1...config-loaders-v0.3.0-beta1) (2025-03-30)
+
+
+### Bug Fixes
+
+* give release package permission ([51b5bff](https://github.com/zenobi-us/config-loaders/commit/51b5bffdac7da094e773fe6fd81e71f2b38d476c))
+
 ## 0.3.0-beta1 (2025-03-30)
 
 
