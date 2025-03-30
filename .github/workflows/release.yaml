@@ -16,6 +16,7 @@ permissions:
   actions: read
   contents: write
   deployments: write
+  packages: write
   pull-requests: write
   id-token: write
 
