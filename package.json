@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/alxevvv/config-loaders"
+    "url": "https://github.com/zenobi.us/config-loaders"
   },
   "license": "MIT",
   "author": "alxevvv <alxevvv@gmail.com>",
@@ -26,21 +26,14 @@
   "scripts": {
     "build": "tsup",
     "clean": "rimraf ./dist",
-    "cz": "git-cz",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint ./{,src,test}/**/*.ts ./*.ts",
     "lint:fix": "eslint ./{,src,test}/**/*.ts ./*.ts --fix",
     "prepare": "husky install",
-    "semantic-release": "semantic-release",
     "test": "vitest run",
     "test:cov": "vitest run --coverage --silent",
     "test:watch": "vitest --watch"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "lint-staged": {
     "**/*.ts": [
@@ -48,19 +41,6 @@
       "prettier --write"
     ],
     "**/*": "prettier --write --ignore-unknown"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
-  "release": {
-    "extends": [
-      "@sanity/semantic-release-preset"
-    ],
-    "branches": [
-      "main"
-    ]
   },
   "dependencies": {
     "findup-sync": "^5.0.0",
@@ -70,9 +50,6 @@
     "optional-require": "^1.1.8"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.5",
-    "@sanity/semantic-release-preset": "^4.1.1",
     "@types/findup-sync": "^4.0.2",
     "@types/lodash.merge": "^4.6.7",
     "@types/lodash.set": "^4.3.7",
@@ -80,8 +57,6 @@
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "@vitest/coverage-c8": "^0.31.4",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.1.4",
     "dotenv-expand": "^10.0.0",
     "eslint": "^8.41.0",
@@ -94,7 +69,6 @@
     "prettier": "^2.8.8",
     "require-in-the-middle": "^7.1.1",
     "rimraf": "^5.0.1",
-    "semantic-release": "^21.0.7",
     "tsup": "^6.7.0",
     "type-fest": "^3.11.1",
     "typescript": "^5.1.3",
