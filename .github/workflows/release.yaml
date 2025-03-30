@@ -2,32 +2,58 @@ name: Release
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+
+env:
+  HUSKY: 0 # https://typicode.github.io/husky/how-to.html#ci-server-and-docker
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+# Needed for nx-set-shas within nx-cloud-main.yml, when run on the master branch
+permissions:
+  actions: read
+  contents: write
+  deployments: write
+  pull-requests: write
+  id-token: write
 
 jobs:
-  release:
+  Process:
     runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release-please.outputs.releases_created }}
+      prs_created: ${{ steps.release-please.outputs.prs_created }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: googleapis/release-please-action@d1a8f221d7723166f48a584aebba00ef3f6febec # v4.1.4
+        id: release-please
         with:
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Setup git
+          token: ${{secrets.RELEASE_PLEASE_TOKEN}}
+          relase-type: node
+      - name: Print Release Data
         run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          echo 'Release Data:'
+
+          echo '''
+            ${{ toJSON(steps.release-please.outputs) }}
+          '''
+
+  Deploy:
+    needs: Process
+    runs-on: ubuntu-latest
+    if: ${{ needs.Process.outputs.releases_created == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
 
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
+          registry-url: "https://npm.pkg.github.com"
           node-version: 18.x
-          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: pnpm i
@@ -49,8 +75,8 @@ jobs:
 
       - name: Release
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ./.npmrc
-          pnpm semantic-release
+          pnpm publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
